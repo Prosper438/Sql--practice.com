@@ -53,3 +53,11 @@ where allergies in ("Penicillin","Morphine")
 order by allergies,first_name,last_name
 
 ```
+##### Question 7
+Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
+``` sql
+SELECT patient_id,diagnosis
+FROM admissions
+group by diagnosis,patient_id
+having COUNT(diagnosis) > 1
+```
