@@ -68,3 +68,12 @@ Display the two results in the same row.
 SELECT (SELECT COUNT(*) from patients where gender = "M") AS male_count,
   		 (SELECT COUNT(*) FROM patients where gender = "F") AS female_count
 ```
+##### Question 9
+Show the city and the total number of patients in the city.
+Order from most to least patients and then by city name ascending.
+``` sql
+select city,count(patient_id)
+from patients
+group by city
+order by 2 desc,	city
+```
