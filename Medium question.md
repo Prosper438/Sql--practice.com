@@ -113,3 +113,18 @@ FROM patients
 order by first_name DESC
 ```
 ##### Question 14
+Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.
+``` sql
+SELECT province_id,SUM(height) AS sum_height
+from patients
+group by province_id
+having SUM(height) >= 7000
+```
+##### Question 15
+Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'.
+``` sql
+SELECT max(weight) - MIN(weight) AS weight_range
+FROM patients
+where last_name = "Maroni"
+```
+##### Question 16
