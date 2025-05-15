@@ -121,3 +121,11 @@ WITH male_percent as
     SELECT CONCAT ( ROUND(male_count * 100.0/total_count,2), "%") AS male_percent
     From male_percent
 ```
+##### Question 9
+For each day display the total amount of admissions on that day. Display the amount changed from the previous date.
+``` sql
+select admission_date,COUNT(admission_date) AS no_of_admissions,
+COUNT(admission_date) - LAG( COUNT(admission_date),1) OVER(order by admission_date) AS amount_change
+FROM admissions
+group by admission_date
+```
