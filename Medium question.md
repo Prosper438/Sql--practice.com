@@ -61,3 +61,10 @@ FROM admissions
 group by diagnosis,patient_id
 having COUNT(diagnosis) > 1
 ```
+##### Question 8
+Show the total amount of male patients and the total amount of female patients in the patients table.
+Display the two results in the same row.
+``` sql
+SELECT (SELECT COUNT(*) from patients where gender = "M") AS male_count,
+  		 (SELECT COUNT(*) FROM patients where gender = "F") AS female_count
+```
