@@ -141,3 +141,19 @@ We need a breakdown for the total amount of admissions each doctor has started e
    order by 1
    
 ```
+##### Question 11
+Sort the province names in ascending order in such a way that the province 'Ontario' is always on top.
+``` sql
+WITH ordering as
+(
+SELECT province_name,
+CASE 
+    WHEN province_name = "Ontario" THEN 0
+    ELSE 1
+END AS LABEL
+FROM province_names
+)
+select province_name
+from ordering
+ORDER BY LABEL,province_name
+```
