@@ -129,3 +129,15 @@ COUNT(admission_date) - LAG( COUNT(admission_date),1) OVER(order by admission_da
 FROM admissions
 group by admission_date
 ```
+##### Question 10
+We need a breakdown for the total amount of admissions each doctor has started each year. Show the doctor_id, doctor_full_name, specialty, year, total_admissions for that year.
+``` sql
+   SELECT doctor_id,concat(first_name," ",last_name) AS full_name,specialty,
+   YEAR(admission_date) AS selected_year,COUNT(YEAR(admission_date))
+   FROM doctors
+   LEFT JOIN admissions 
+   ON admissions.attending_doctor_id = doctors.doctor_id
+   group by selected_year,doctor_id
+   order by 1
+   
+```
